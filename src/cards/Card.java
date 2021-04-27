@@ -4,7 +4,6 @@ import cards.enums.cardFace;
 import cards.enums.cardSuit;
 
 public class Card {
-
     //Fields
     private final cardFace face;
     private final cardSuit suit;

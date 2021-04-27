@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class GameState implements Serializable {
 
-    GameState(){
+    public GameState(){
 
     }
 
