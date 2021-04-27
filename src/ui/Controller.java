@@ -38,6 +38,14 @@ public class Controller {
     public TabPane tab_plane;
     public Tab splash_tab;
     public Tab game_tab;
+    public Button stand_button_0;
+    public Button hit_button_0;
+    public Button stand_button_1;
+    public Button hit_button_1;
+    public Button stand_button_2;
+    public Button hit_button_2;
+    public Button stand_button_3;
+    public Button hit_button_3;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -60,7 +68,16 @@ public class Controller {
         game.start();
         tab_plane.getSelectionModel().select(game_tab);
         splash_tab.setDisable(true);
+
+        // Configure player names
         player_name_0.setText(game.getPlayers().get(0).toString());
+        player_name_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).toString() : "");
+        player_name_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).toString() : "");
+        player_name_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).toString() : "");
+
+        // Configure hands from cold start
+        
+
     }
 
     private void unlockCreateGame(){
@@ -75,10 +92,10 @@ public class Controller {
 
     public void create_game(MouseEvent mouseEvent) {
         ArrayList<String> players = new ArrayList<String>();
-        if(player_namebox_1.getText() != null) players.add(0, player_namebox_1.getText());
-        if(player_namebox_2.getText() != null) players.add(1, player_namebox_1.getText());
-        if(player_namebox_3.getText() != null) players.add(2, player_namebox_1.getText());
-        if(player_namebox_4.getText() != null) players.add(3, player_namebox_1.getText());
+        if(!player_namebox_1.getText().equals("")) players.add(0, player_namebox_1.getText());
+        if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_1.getText());
+        if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_1.getText());
+        if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_1.getText());
         game = new GameState(players.toArray(new String[0]));
         start_game();
     }

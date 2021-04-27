@@ -27,4 +27,8 @@ public class Player {
             gameState.potValue += amount;
         }
     }
+
+    public String toString(){
+        return name;
+    }
 }

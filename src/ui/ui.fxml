@@ -5,9 +5,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -41,47 +39,45 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane fx:id="game_grid_plane" layoutX="-2.0" layoutY="-1.0" prefHeight="694.0" prefWidth="1280.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="256.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="0.0" prefWidth="256.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="0.0" prefWidth="256.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="256.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="256.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="297.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="564.0" minHeight="10.0" prefHeight="447.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="470.0" minHeight="10.0" prefHeight="199.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer" textAlignment="CENTER" wrappingWidth="256.13671875">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="player_name_0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#1" textAlignment="CENTER" wrappingWidth="256.13671875" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="player_name_1" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#2" textAlignment="CENTER" wrappingWidth="256.13671875" GridPane.columnIndex="2">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="player_name_2" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#3" textAlignment="CENTER" wrappingWidth="256.13671875" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="player_name_3" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#4" textAlignment="CENTER" wrappingWidth="256.13671875" GridPane.columnIndex="4">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </GridPane>
+                        <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer" textAlignment="CENTER" wrappingWidth="241.13671875">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="player_name_0" layoutX="255.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#1" textAlignment="CENTER" wrappingWidth="256.13671875">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="player_name_1" layoutX="512.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#2" textAlignment="CENTER" wrappingWidth="256.13671875">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="player_name_2" layoutX="768.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#3" textAlignment="CENTER" wrappingWidth="256.13671875">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="player_name_3" layoutX="1024.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player#4" textAlignment="CENTER" wrappingWidth="256.13671875">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Line endX="-100.0" endY="676.0" layoutX="355.0" layoutY="15.0" startX="-100.0" startY="-19.0" />
+                        <Line endX="-100.0" endY="676.0" layoutX="612.0" layoutY="15.0" startX="-100.0" startY="-17.0" />
+                        <Line endX="-100.0" endY="676.0" layoutX="868.0" layoutY="23.0" startX="-100.0" startY="-23.0" />
+                        <Line endX="-100.0" endY="676.0" layoutX="1124.0" layoutY="17.0" startX="-100.0" startY="-29.0" />
+                        <Text layoutX="295.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Line endX="1179.0" layoutX="101.0" layoutY="510.0" startX="-100.0" />
+                        <Button fx:id="stand_button_0" layoutX="408.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_0" layoutX="409.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_1" layoutX="682.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_1" layoutX="683.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_2" layoutX="939.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_2" layoutX="940.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_3" layoutX="1187.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_3" layoutX="1188.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
                      </children></AnchorPane>
             </content>
           </Tab>
