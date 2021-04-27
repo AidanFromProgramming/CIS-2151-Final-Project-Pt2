@@ -29,19 +29,28 @@ public class Controller {
 
     }
 
+    public void start_game(){
+
+    }
 
     public void load_game_requested(MouseEvent mouseEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select game save");
+        fileChooser.setTitle("Load Blackjack Save");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Blackjack Saves", "*.blkjk"),
+                new FileChooser.ExtensionFilter("Blackjack Game", "*.blkjk"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(main_stage.getScene().getWindow());
+        gameFile = fileChooser.showOpenDialog(main_stage.getScene().getWindow());
 //        if (selectedFile != null) {
 //            .display(selectedFile);
 //        }
     }
 
     public void new_game_requested(MouseEvent mouseEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Create Blackjack Save");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Blackjack Game", "*.blkjk"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        gameFile = fileChooser.showSaveDialog(main_stage.getScene().getWindow());
     }
 }
