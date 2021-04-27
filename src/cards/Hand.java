@@ -1,9 +1,10 @@
 package cards;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hand {
+public class Hand implements Serializable {
     //Fields
     private List<Card> cards;
 

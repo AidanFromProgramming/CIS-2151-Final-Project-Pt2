@@ -4,7 +4,9 @@ import cards.Hand;
 import exceptions.player.NotEnoughMoneyException;
 import game.GameState;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     //Fields
     public final String name;
     public final Hand hand;

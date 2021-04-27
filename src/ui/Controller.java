@@ -66,7 +66,7 @@ public class Controller {
         tab_plane.setBackground(background);
     }
 
-    public void run_game(){
+    public void start_game() throws InterruptedException, IOException {
         game.start();
         tab_plane.getSelectionModel().select(game_tab);
         splash_tab.setDisable(true);
@@ -77,6 +77,10 @@ public class Controller {
         player_name_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).toString() : "");
         player_name_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).toString() : "");
 
+        int gameCycleCounter = 0;
+
+        save_game();
+
         while(game.isRunning()) {
 
             // Update Hands
@@ -85,7 +89,13 @@ public class Controller {
             player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).getHandToString() : "");
             player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).getHandToString() : "");
 
+            Thread.sleep(250);
 
+            if(gameCycleCounter > 30 * 4){  // Run autosave every 30 seconds
+                save_game();
+            }
+
+            gameCycleCounter++;
         }
 
     }
@@ -100,17 +110,25 @@ public class Controller {
         new_game_option_button.setVisible(false);
     }
 
-    public void create_game(MouseEvent mouseEvent) {
+    public void save_game() throws IOException {
+        if(fileStreamOut == null || gameStreamOut == null){
+            fileStreamOut = new FileOutputStream(gameFile.getAbsolutePath());
+            gameStreamOut = new ObjectOutputStream(fileStreamOut);
+        }
+        gameStreamOut.writeObject(game);
+    }
+
+    public void create_game(MouseEvent mouseEvent) throws InterruptedException, IOException {
         ArrayList<String> players = new ArrayList<String>();
         if(!player_namebox_1.getText().equals("")) players.add(0, player_namebox_1.getText());
         if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_1.getText());
         if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_1.getText());
         if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_1.getText());
         game = new GameState(players.toArray(new String[0]));
-        run_game();
+        start_game();
     }
 
-    public void load_game_requested(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
+    public void load_game_requested(MouseEvent mouseEvent) throws IOException, ClassNotFoundException, InterruptedException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Blackjack Game");
         fileChooser.getExtensionFilters().addAll(
@@ -121,7 +139,7 @@ public class Controller {
         fileStreamIn = new FileInputStream(gameFile.getAbsolutePath());
         gameStreamIn = new ObjectInputStream(fileStreamIn);
         game = (GameState) gameStreamIn.readObject();
-        run_game();
+        start_game();
     }
 
     public void new_game_requested(MouseEvent mouseEvent) throws FileNotFoundException {

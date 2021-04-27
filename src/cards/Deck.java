@@ -1,9 +1,10 @@
 package cards;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Deck {
+public class Deck implements Serializable {
     //Fields
     private List<Card> cards;
     private final int size; //NOTE: Size means how many decks there are in this deck. Simply the maximum.
