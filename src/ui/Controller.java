@@ -13,9 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-import player.Player;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -68,7 +66,7 @@ public class Controller {
         tab_plane.setBackground(background);
     }
 
-    public void start_game(){
+    public void run_game(){
         game.start();
         tab_plane.getSelectionModel().select(game_tab);
         splash_tab.setDisable(true);
@@ -79,11 +77,16 @@ public class Controller {
         player_name_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).toString() : "");
         player_name_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).toString() : "");
 
-        // Configure hands from cold start
-        player_hand_0.setText(game.getPlayers().get(0).getHandToString());
-        player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).getHandToString() : "");
-        player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).getHandToString() : "");
-        player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).getHandToString() : "");
+        while(game.isRunning()) {
+
+            // Update Hands
+            player_hand_0.setText(game.getPlayers().get(0).getHandToString());
+            player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).getHandToString() : "");
+            player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).getHandToString() : "");
+            player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).getHandToString() : "");
+
+
+        }
 
     }
 
@@ -104,7 +107,7 @@ public class Controller {
         if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_1.getText());
         if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_1.getText());
         game = new GameState(players.toArray(new String[0]));
-        start_game();
+        run_game();
     }
 
     public void load_game_requested(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
@@ -118,7 +121,7 @@ public class Controller {
         fileStreamIn = new FileInputStream(gameFile.getAbsolutePath());
         gameStreamIn = new ObjectInputStream(fileStreamIn);
         game = (GameState) gameStreamIn.readObject();
-        start_game();
+        run_game();
     }
 
     public void new_game_requested(MouseEvent mouseEvent) throws FileNotFoundException {

@@ -12,8 +12,13 @@ public class GameState extends Thread implements Serializable {
     //Fields
     private List<Player> players;
     private Deck deck;
+    private boolean running;
     private int playerTurn;
     public int potValue;
+
+    public boolean isRunning() {
+        return running;
+    }
 
     //Constructor
     public GameState(String... playerNames) {
