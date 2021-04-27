@@ -10,20 +10,20 @@ import java.util.List;
 
 public class GameState extends Thread implements Serializable {
     //Fields
-    private List<Player> players;
+    private final List<Player> players;
     private Deck deck;
     public int playerTurn;
     public int potValue;
 
     //Constructor
-    public GameState(int numberOfPlayers, String... playerNames) {
+    public GameState(String[] playerNames) {
         players = new ArrayList<>();
         deck = new Deck(6);
 
         deck.genAndShuffle();
 
         int iteration = 0;
-        for (int player = 0; player < numberOfPlayers; player++) {
+        for (int player = 0; player < playerNames.length; player++) {
             players.add(new Player(playerNames[iteration]));
             iteration++;
         }
@@ -46,9 +46,9 @@ public class GameState extends Thread implements Serializable {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
+//    public void setPlayers(List<Player> players) {
+//        this.players = players;
+//    }
 
     public Deck getDeck() {
         return deck;

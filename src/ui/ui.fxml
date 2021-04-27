@@ -13,9 +13,9 @@
 
 <AnchorPane fx:id="main_stage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
    <children>
-      <TabPane prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tab_plane" prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab>
+          <Tab fx:id="splash_tab">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -25,15 +25,19 @@
                            </font>
                         </Text>
                         <TextField fx:id="game_save_path_entry" editable="false" layoutX="566.0" layoutY="378.0" visible="false" />
-                        <Button fx:id="game_load_button" layoutX="500.0" layoutY="378.0" mnemonicParsing="false" text="Load" visible="false" />
+                        <Button fx:id="game_load_button" layoutX="619.0" layoutY="179.0" mnemonicParsing="false" onMouseClicked="#create_game" text="Start" visible="false" />
                         <Button fx:id="load_game_option_button" layoutX="663.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#load_game_requested" text="Load Game" />
                         <Button fx:id="new_game_option_button" layoutX="543.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#new_game_requested" text="New Game" />
                         <Text layoutX="580.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please chose an option" />
+                        <TextField fx:id="player_namebox_1" layoutX="566.0" layoutY="216.0" promptText="Player #1's Name" visible="false" />
+                        <TextField fx:id="player_namebox_2" layoutX="566.0" layoutY="261.0" promptText="Player #2's Name" visible="false" />
+                        <TextField fx:id="player_namebox_3" layoutX="566.0" layoutY="306.0" promptText="Player #3's Name" visible="false" />
+                        <TextField fx:id="player_namebox_4" layoutX="567.0" layoutY="350.0" promptText="Player #4's Name" visible="false" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab>
+          <Tab fx:id="game_tab">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
