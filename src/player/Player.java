@@ -29,6 +29,10 @@ public class Player {
         }
     }
 
+    public String getHandToString(){
+        return "Test ♣";
+    }
+
     public String toString(){
         return name;
     }

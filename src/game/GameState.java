@@ -33,9 +33,6 @@ public class GameState extends Thread implements Serializable {
         //Starting Values
         playerTurn = 0;
         potValue = 0;
-
-        //Start the Game
-        start();
     }
 
     //Methods

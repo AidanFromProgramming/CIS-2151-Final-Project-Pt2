@@ -46,6 +46,10 @@ public class Controller {
     public Button hit_button_2;
     public Button stand_button_3;
     public Button hit_button_3;
+    public Text player_hand_0;
+    public Text player_hand_1;
+    public Text player_hand_2;
+    public Text player_hand_3;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -76,7 +80,10 @@ public class Controller {
         player_name_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).toString() : "");
 
         // Configure hands from cold start
-        
+        player_hand_0.setText(game.getPlayers().get(0).getHandToString());
+        player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).getHandToString() : "");
+        player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).getHandToString() : "");
+        player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).getHandToString() : "");
 
     }
 
