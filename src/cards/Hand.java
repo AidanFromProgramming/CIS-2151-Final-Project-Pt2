@@ -65,6 +65,6 @@ public class Hand implements Serializable {
     }
 
     private void sortHand() {
-        Collections.sort(cards, Comparator.comparing(Card::getFace));
+        cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
     }
 }

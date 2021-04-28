@@ -60,10 +60,9 @@ public class GameState extends Thread implements Serializable {
     }
 
     public void doubleUpPressed(int playerNumber) {
-        Player player = players.get(playerNumber);
 
         //Setting the player to be double up
-        if (turn == 0) {
+        if (turn == 0 && players.get(playerNumber).doubleUp == 0) {
             //Forcing them to draw a card and checking if they busted
             players.get(playerNumber).hand.drawCard(deck);
             if (players.get(playerNumber).hand.calculateHandValue() > 21) {
@@ -79,7 +78,7 @@ public class GameState extends Thread implements Serializable {
 
     public void dontDoubleUpPressed(int playerNumber) {
         //Setting the player to be a not double up
-        if (turn == 0) {
+        if (turn == 0 && players.get(playerNumber).doubleUp == 0) {
             players.get(playerNumber).doubleUp = -1;
         }
 
