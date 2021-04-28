@@ -177,22 +177,24 @@ public class GameState extends Thread implements Serializable {
                 highestHand = playerHandValues.get(i);
             }
         }
-        List<Integer> playersWithHighestHand = new ArrayList<>();
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).hand.calculateHandValue() == highestHand) {
-                playersWithHighestHand.add(i);
+        if (highestHand >= dealer.hand.calculateHandValue()) {
+            List<Integer> playersWithHighestHand = new ArrayList<>();
+            for (int i = 0; i < players.size(); i++) {
+                if (players.get(i).hand.calculateHandValue() == highestHand) {
+                    playersWithHighestHand.add(i);
+                }
             }
-        }
-        for (int i : playersWithHighestHand) {
-            players.get(i).money += potValue / playersWithHighestHand.size();
-        }
+            for (int i : playersWithHighestHand) {
+                players.get(i).money += potValue / playersWithHighestHand.size();
+            }
 
-        //Clear hands & undouble up
-        for (int i = 0; i < players.size(); i++) {
-            players.get(i).hand.clear();
-            players.get(i).doubleUp = 0;
-            players.get(i).busted = false;
-            players.get(i).standing = false;
+            //Clear hands & undouble up
+            for (Player player : players) {
+                player.hand.clear();
+                player.doubleUp = 0;
+                player.busted = false;
+                player.standing = false;
+            }
         }
 
         //Start new round
