@@ -4,10 +4,7 @@ import cards.enums.cardFace;
 import cards.enums.cardSuit;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Hand implements Serializable {
     //Fields
@@ -54,7 +51,8 @@ public class Hand implements Serializable {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Card card : cards) {
-            stringBuilder.append(card.getFace().toString());
+            assert card != null;
+            stringBuilder.append(Objects.requireNonNull(card).getFace().toString());
             stringBuilder.append(" of ");
             stringBuilder.append(card.getSuit().toString());
             stringBuilder.append("\n");
