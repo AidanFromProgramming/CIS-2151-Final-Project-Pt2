@@ -62,6 +62,7 @@ public class Controller extends Thread{
     public Text player_money_1;
     public Text player_money_2;
     public Text player_money_3;
+    public Text current_player_text;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -134,7 +135,7 @@ public class Controller extends Thread{
         while(game.isRunning()) {
 
             // Update Hands
-            //dealer_hand.setText(game.);
+            dealer_hand.setText(game.dealer.hand.toString());
             player_hand_0.setText(game.getPlayers().get(0).hand.toString());
             player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).hand.toString() : "");
             player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).hand.toString() : "");
@@ -144,6 +145,7 @@ public class Controller extends Thread{
             player_money_1.setText(game.getPlayers().size() > 1 ? "Money: " + game.getPlayers().get(1).money : "");
             player_money_2.setText(game.getPlayers().size() > 2 ? "Money: " + game.getPlayers().get(2).money : "");
             player_money_3.setText(game.getPlayers().size() > 3 ? "Money: " + game.getPlayers().get(3).money : "");
+            current_player_text.setText("Current Player: " + game.getPlayers().get(game.turn).name);
 
             try {
                 Thread.sleep(250);

@@ -12,12 +12,12 @@ import java.util.List;
 public class GameState extends Thread implements Serializable {
     //Fields
     public int potValue;
-    private final List<Player> players;
-    private final Deck deck;
-    private final Player dealer;
-    private boolean running;
-    private int turn;
-    private int initialBet;
+    public final List<Player> players;
+    public final Deck deck;
+    public final Player dealer;
+    public boolean running;
+    public int turn;
+    public int initialBet;
 
     //Constructor
     public GameState(String... playerNames) {
