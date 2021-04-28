@@ -100,7 +100,7 @@ public class GameState extends Thread implements Serializable {
             } else {
                 player++;
             }
-            if (player == turn + 1) {
+            if (player == turn) {
                 endRound();
                 return;
             }
