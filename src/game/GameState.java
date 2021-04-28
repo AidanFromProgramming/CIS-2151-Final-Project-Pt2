@@ -143,6 +143,9 @@ public class GameState extends Thread implements Serializable {
         //Clearing player hands
         for (Player player : players) {
             player.hand.clear();
+            player.doubleUp = 0;
+            player.busted = false;
+            player.standing = false;
         }
         dealer.clear();
 
