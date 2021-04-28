@@ -127,7 +127,6 @@ public class Controller extends Thread{
 
     @Override
     public void run() {
-
         tab_plane.getSelectionModel().select(game_tab);
         splash_tab.setDisable(true);
         game_tab.setDisable(false);
@@ -144,7 +143,7 @@ public class Controller extends Thread{
         while(game.isRunning()) {
 
             // Update Hands
-            dealer_hand.setText(game.dealer.hand.toString());
+            dealer_hand.setText(game.dealer.toString());
             player_hand_0.setText(game.getPlayers().get(0).hand.toString());
             player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).hand.toString() : "");
             player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).hand.toString() : "");
@@ -203,13 +202,13 @@ public class Controller extends Thread{
         gameStreamOut.writeObject(game);
     }
 
-    public void create_game() {
+    public void createGame() {
         ArrayList<String> players = new ArrayList<String>();
         if(!player_namebox_1.getText().equals("")) players.add(0, player_namebox_1.getText());
         if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_2.getText());
         if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_3.getText());
         if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_4.getText());
-        game = new GameState(players.toArray(new String[0]));
+        game = new GameState(dealer, players.toArray(new String[0]));
         game.startNewRound();
         startGame();
     }

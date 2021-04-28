@@ -1,6 +1,7 @@
 package game;
 
 import cards.Deck;
+import cards.dealer.Dealer;
 import exceptions.player.NotEnoughMoneyException;
 import player.Player;
 
@@ -13,19 +14,19 @@ public class GameState extends Thread implements Serializable {
     public int potValue;
     public final List<Player> players;
     public final Deck deck;
-    public final Player dealer;
+    public final Dealer dealer;
     public boolean running;
     public int turn;
     public int initialBet;
 
     //Constructor
-    public GameState(String... playerNames) {
+    public GameState(Dealer dealer, String... playerNames) {
         //Setting up the deck
         deck = new Deck(6);
         deck.genAndShuffle();
 
         //Dealer
-        dealer = new Player("Dealer");
+        this.dealer = dealer;
 
         //Setting up players
         players = new ArrayList<>();

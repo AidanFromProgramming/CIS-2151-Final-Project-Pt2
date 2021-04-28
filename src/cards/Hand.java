@@ -8,8 +8,7 @@ import java.util.Objects;
 
 public class Hand implements Serializable {
     //Fields
-    private final List<Card> cards;
-    private final StringBuilder display = new StringBuilder();
+    protected final List<Card> cards;
 
     //Constructor
     public Hand() {
