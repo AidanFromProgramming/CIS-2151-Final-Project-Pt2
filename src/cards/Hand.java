@@ -20,7 +20,7 @@ public class Hand implements Serializable {
         this.cards.add(deck.getCards().remove(0));
     }
 
-    public int calculateHandValue() {
+    public int value() {
         int handValue = 0;
         for (Card card : cards) {
             switch (card.getFace().ordinal()) {

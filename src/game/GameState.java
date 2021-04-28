@@ -57,7 +57,7 @@ public class GameState extends Thread implements Serializable {
         dealer.drawCard(deck);
         dealer.sort();
 
-        if (dealer.calculateHandValue() <= 10) {
+        if (dealer.value() <= 10) {
             initialBet += initialBet;
             dealer.drawCard(deck);
             dealer.sort();
@@ -112,7 +112,7 @@ public class GameState extends Thread implements Serializable {
         //Divvying up money to highest scoring individuals (very inefficient I know)
         List<Integer> playerHandValues = new ArrayList<>();
         for (int i = 0; i < players.size(); i++) {
-            playerHandValues.add(i, players.get(i).hand.calculateHandValue());
+            playerHandValues.add(i, players.get(i).hand.value());
         }
         int highestHand = 0;
         for (int i = 0; i < players.size(); i++) {
@@ -120,10 +120,10 @@ public class GameState extends Thread implements Serializable {
                 highestHand = playerHandValues.get(i);
             }
         }
-        if (highestHand >= dealer.calculateHandValue()) {
+        if (highestHand >= dealer.value()) {
             List<Integer> playersWithHighestHand = new ArrayList<>();
             for (int i = 0; i < players.size(); i++) {
-                if (players.get(i).hand.calculateHandValue() == highestHand) {
+                if (players.get(i).hand.value() == highestHand) {
                     playersWithHighestHand.add(i);
                 }
             }
@@ -158,7 +158,7 @@ public class GameState extends Thread implements Serializable {
         if (turn >= 0 && turn % players.size() == playerNumber) {
             player.hand.drawCard(deck);
             player.hand.sort();
-            if (player.hand.calculateHandValue() > 21) {
+            if (player.hand.value() > 21) {
                 player.busted = true;
             }
             advanceTurn();
@@ -180,7 +180,7 @@ public class GameState extends Thread implements Serializable {
             //Forcing them to draw a card and checking if they busted
             players.get(playerNumber).hand.drawCard(deck);
             players.get(playerNumber).hand.sort();
-            if (players.get(playerNumber).hand.calculateHandValue() > 21) {
+            if (players.get(playerNumber).hand.value() > 21) {
                 players.get(playerNumber).busted = true;
             }
 
