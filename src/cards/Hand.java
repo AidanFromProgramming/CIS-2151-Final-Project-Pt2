@@ -71,12 +71,4 @@ public class Hand implements Serializable {
         cards.sort(Comparator.comparing(Card::getSuit));
     }
 
-    //Getters and Setters
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
-    }
 }
