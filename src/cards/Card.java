@@ -20,40 +20,40 @@ public class Card implements Serializable {
     public static cardFace getCardFace(int ordinal) {
         switch (ordinal) {
             case 0 -> {
-                return cardFace.two;
+                return cardFace.Two;
             }
             case 1 -> {
-                return cardFace.three;
+                return cardFace.Three;
             }
             case 2 -> {
-                return cardFace.four;
+                return cardFace.Four;
             }
             case 3 -> {
-                return cardFace.five;
+                return cardFace.Five;
             }
             case 4 -> {
-                return cardFace.six;
+                return cardFace.Six;
             }
             case 5 -> {
-                return cardFace.seven;
+                return cardFace.Seven;
             }
             case 6 -> {
-                return cardFace.eight;
+                return cardFace.Eight;
             }
             case 7 -> {
-                return cardFace.nine;
+                return cardFace.Nine;
             }
             case 8 -> {
-                return cardFace.jack;
+                return cardFace.Jack;
             }
             case 9 -> {
-                return cardFace.queen;
+                return cardFace.Queen;
             }
             case 10 -> {
-                return cardFace.king;
+                return cardFace.King;
             }
             case 11 -> {
-                return cardFace.ace;
+                return cardFace.Ace;
             }
         }
         return null;
@@ -62,16 +62,16 @@ public class Card implements Serializable {
     public static cardSuit getCardSuit(int ordinal) {
         switch (ordinal) {
             case 0 -> {
-                return cardSuit.clubs;
+                return cardSuit.Clubs;
             }
             case 1 -> {
-                return cardSuit.diamonds;
+                return cardSuit.Diamonds;
             }
             case 2 -> {
-                return cardSuit.hearts;
+                return cardSuit.Hearts;
             }
             case 3 -> {
-                return cardSuit.spades;
+                return cardSuit.Spades;
             }
         }
         return null;

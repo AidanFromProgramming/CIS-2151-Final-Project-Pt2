@@ -12,11 +12,10 @@ import java.util.List;
 public class GameState extends Thread implements Serializable {
     //Fields
     public int potValue;
-
-    private int turn;
-    private List<Player> players;
-    private Deck deck;
+    private final List<Player> players;
+    private final Deck deck;
     private boolean running;
+    private int turn;
     private int initialBet;
 
     //Constructor
@@ -35,9 +34,6 @@ public class GameState extends Thread implements Serializable {
         }
     }
 
-    public void restart(){
-
-    }
 
     public void hitPressed(int playerNumber) {
         Player player = players.get(playerNumber);
@@ -90,18 +86,6 @@ public class GameState extends Thread implements Serializable {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
     public boolean isRunning() {
         return running;
     }
@@ -128,6 +112,7 @@ public class GameState extends Thread implements Serializable {
             if (player.bankrupt) continue;
             if (player.doubleUp == 0) {
                 allPlayersSelected = false;
+                break;
             }
         }
 

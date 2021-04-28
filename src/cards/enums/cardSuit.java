@@ -1,5 +1,5 @@
 package cards.enums;
 
 public enum cardSuit {
-    clubs, diamonds, hearts, spades
+    Clubs, Diamonds, Hearts, Spades
 }

@@ -36,10 +36,6 @@ public class Player implements Serializable {
         }
     }
 
-    public String getHandToString() {
-        return "Test ♣";
-    }
-
     public String toString() {
         return name;
     }
