@@ -55,7 +55,7 @@ public class Deck implements Serializable {
         cards.clear();
         for (int decks = 0; decks < this.size; decks++) {
             for (int suit = 0; suit < 4; suit++) {
-                for (int face = 0; face < 13; face++) {
+                for (int face = 0; face < 12; face++) {
                     cards.add(new Card(Card.getCardFace(face), Card.getCardSuit(suit)));
                 }
             }

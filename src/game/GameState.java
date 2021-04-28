@@ -83,8 +83,6 @@ public class GameState extends Thread implements Serializable {
                 } catch (NotEnoughMoneyException e) {
                     player.bankrupt = true;
                 }
-                if (player.bankrupt) continue;
-                if (player.busted) continue;
             }
 
             advanceTurn();

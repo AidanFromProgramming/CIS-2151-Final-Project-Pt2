@@ -1,10 +1,10 @@
 package cards;
 
-import cards.enums.cardFace;
-import cards.enums.cardSuit;
-
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 public class Hand implements Serializable {
     //Fields
@@ -62,11 +62,7 @@ public class Hand implements Serializable {
     }
 
     public void sort() {
-        try {
-            cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
-        } catch (NullPointerException e) {
-            sort();
-        }
+        cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
     }
 
     public void clear() {

@@ -1,6 +1,5 @@
 package player;
 
-import cards.Card;
 import cards.Hand;
 import exceptions.player.NotEnoughMoneyException;
 import game.GameState;
