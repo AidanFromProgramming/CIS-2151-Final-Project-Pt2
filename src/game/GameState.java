@@ -20,13 +20,13 @@ public class GameState extends Thread implements Serializable {
     public int initialBet;
 
     //Constructor
-    public GameState(Dealer dealer, String... playerNames) {
+    public GameState(String... playerNames) {
         //Setting up the deck
         deck = new Deck(6);
         deck.genAndShuffle();
 
         //Dealer
-        this.dealer = dealer;
+        this.dealer = new Dealer();
 
         //Setting up players
         players = new ArrayList<>();
@@ -53,14 +53,14 @@ public class GameState extends Thread implements Serializable {
             player.hand.drawCard(deck);
             player.hand.sort();
         }
-        dealer.hand.drawCard(deck);
-        dealer.hand.drawCard(deck);
-        dealer.hand.sort();
+        dealer.drawCard(deck);
+        dealer.drawCard(deck);
+        dealer.sort();
 
-        if (dealer.hand.calculateHandValue() <= 10) {
+        if (dealer.calculateHandValue() <= 10) {
             initialBet += initialBet;
-            dealer.hand.drawCard(deck);
-            dealer.hand.sort();
+            dealer.drawCard(deck);
+            dealer.sort();
         }
     }
 
@@ -119,7 +119,7 @@ public class GameState extends Thread implements Serializable {
                 highestHand = playerHandValues.get(i);
             }
         }
-        if (highestHand >= dealer.hand.calculateHandValue()) {
+        if (highestHand >= dealer.calculateHandValue()) {
             List<Integer> playersWithHighestHand = new ArrayList<>();
             for (int i = 0; i < players.size(); i++) {
                 if (players.get(i).hand.calculateHandValue() == highestHand) {

@@ -208,7 +208,7 @@ public class Controller extends Thread{
         if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_2.getText());
         if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_3.getText());
         if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_4.getText());
-        game = new GameState(dealer, players.toArray(new String[0]));
+        game = new GameState(players.toArray(new String[0]));
         game.startNewRound();
         startGame();
     }
