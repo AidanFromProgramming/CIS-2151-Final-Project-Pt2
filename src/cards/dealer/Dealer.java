@@ -10,7 +10,7 @@ public class Dealer extends Hand {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         int iteration = 0;
-
+        stringBuilder.delete(0, stringBuilder.length());
         for (Card card : cards) {
             if (iteration != 0) {
                 assert card != null;

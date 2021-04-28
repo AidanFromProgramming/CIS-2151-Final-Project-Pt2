@@ -89,7 +89,9 @@ public class Controller extends Thread{
         System.out.println("Window close request ...");
         try{
             saveGame();
-        }catch (IOException ignored){}
+        }catch (IOException e){
+            System.out.println(e.toString());
+        }
 
         System.out.println("Game successfully saved");
     }
@@ -195,11 +197,12 @@ public class Controller extends Thread{
 
     public void saveGame() throws IOException {
         System.out.println("Saving game....");
-        if(fileStreamOut == null || gameStreamOut == null){
-            fileStreamOut = new FileOutputStream(gameFile.getAbsolutePath());
-            gameStreamOut = new ObjectOutputStream(fileStreamOut);
-        }
+        fileStreamOut = new FileOutputStream(gameFile.getAbsolutePath());
+        gameStreamOut = new ObjectOutputStream(fileStreamOut);
         gameStreamOut.writeObject(game);
+        gameStreamOut.close();
+        fileStreamOut.close();
+        System.out.println("Game saved");
     }
 
     public void create_game() {

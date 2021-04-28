@@ -48,6 +48,7 @@ public class Hand implements Serializable {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.delete(0, stringBuilder.length());
 
         for (Card card : cards) {
             assert card != null;
