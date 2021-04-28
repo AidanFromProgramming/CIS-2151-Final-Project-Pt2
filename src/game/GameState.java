@@ -93,9 +93,9 @@ public class GameState extends Thread implements Serializable {
 
     public void advanceTurn() {
         boolean validPlayer = false;
-        int player = 1;
+        int player = 0;
         while (!validPlayer) {
-            if (!players.get(player - 1).busted && !players.get(player - 1).standing && !players.get(player - 1).bankrupt) {
+            if (!players.get(player).busted && !players.get(player).standing && !players.get(player).bankrupt) {
                 validPlayer = true;
             } else {
                 player++;
@@ -146,7 +146,7 @@ public class GameState extends Thread implements Serializable {
 
     public void hitPressed(int playerNumber) {
         Player player = players.get(playerNumber);
-        if (turn >= 0 && turn % players.size() == playerNumber + 1) {
+        if (turn >= 0 && turn % players.size() == playerNumber) {
             player.hand.drawCard(deck);
             player.hand.sort();
             if (player.hand.calculateHandValue() > 21) {
@@ -158,7 +158,7 @@ public class GameState extends Thread implements Serializable {
 
     public void standPressed(int playerNumber) {
         Player player = players.get(playerNumber);
-        if (turn > 0 && turn % players.size() == playerNumber + 1) {
+        if (turn >= 0 && turn % players.size() == playerNumber) {
             player.standing = true;
             advanceTurn();
         }
