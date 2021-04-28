@@ -95,7 +95,8 @@
                         <Text fx:id="player_money_1" layoutX="552.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
                         <Text fx:id="player_money_2" layoutX="808.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
                         <Text fx:id="player_money_3" layoutX="1064.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
-                        <Text fx:id="current_player_text" layoutX="31.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Player: N/A" wrappingWidth="207.13671875" />
+                        <Text fx:id="current_player_text" layoutX="30.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Player: N/A" wrappingWidth="207.13671875" />
+                        <Text fx:id="current_pot_text" layoutX="31.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Pot: N/A" wrappingWidth="207.13671875" />
                      </children></AnchorPane>
             </content>
           </Tab>

@@ -63,6 +63,7 @@ public class Controller extends Thread{
     public Text player_money_2;
     public Text player_money_3;
     public Text current_player_text;
+    public Text current_pot_text;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -146,6 +147,7 @@ public class Controller extends Thread{
             player_money_2.setText(game.getPlayers().size() > 2 ? "Money: " + game.getPlayers().get(2).money : "");
             player_money_3.setText(game.getPlayers().size() > 3 ? "Money: " + game.getPlayers().get(3).money : "");
             current_player_text.setText("Current Player: " + game.getPlayers().get(game.turn).name);
+            current_pot_text.setText("Current Pot: " + game.potValue);
 
             try {
                 Thread.sleep(250);
