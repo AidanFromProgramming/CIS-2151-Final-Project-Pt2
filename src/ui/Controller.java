@@ -1,16 +1,15 @@
 package ui;
 
 import game.GameState;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.stage.*;
+import javafx.stage.FileChooser;
+import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -86,7 +85,7 @@ public class Controller extends Thread{
         System.out.println("Game successfully saved");
     }
 
-    public void startGame() throws InterruptedException, IOException {
+    public void startGame() {
         // Configure player names
         player_name_0.setText(game.getPlayers().get(0).toString());
         player_name_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).toString() : "");
@@ -168,7 +167,7 @@ public class Controller extends Thread{
         gameStreamOut.writeObject(game);
     }
 
-    public void create_game(MouseEvent mouseEvent) throws InterruptedException, IOException {
+    public void create_game() {
         ArrayList<String> players = new ArrayList<String>();
         if(!player_namebox_1.getText().equals("")) players.add(0, player_namebox_1.getText());
         if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_2.getText());
@@ -178,7 +177,7 @@ public class Controller extends Thread{
         startGame();
     }
 
-    public void load_game_requested(MouseEvent mouseEvent) throws IOException, ClassNotFoundException, InterruptedException {
+    public void load_game_requested() throws IOException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Blackjack Game");
         fileChooser.setInitialFileName("jackblack");
@@ -203,7 +202,7 @@ public class Controller extends Thread{
         startGame();
     }
 
-    public void new_game_requested(MouseEvent mouseEvent) throws FileNotFoundException {
+    public void new_game_requested() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Create Blackjack Game");
         fileChooser.getExtensionFilters().addAll(
@@ -217,67 +216,67 @@ public class Controller extends Thread{
 
     //Button press passthroughs handlers
 
-    public void on_double_up_0(MouseEvent mouseEvent) {
+    public void on_double_up_0() {
         game.doubleUpPressed(0);
     }
 
-    public void on_double_up_1(MouseEvent mouseEvent) {
+    public void on_double_up_1() {
         game.doubleUpPressed(1);
     }
 
-    public void on_double_up_2(MouseEvent mouseEvent) {
+    public void on_double_up_2() {
         game.doubleUpPressed(2);
     }
 
-    public void on_double_up_3(MouseEvent mouseEvent) {
+    public void on_double_up_3() {
         game.doubleUpPressed(3);
     }
 
-    public void on_player_stand_pressed_0(MouseEvent mouseEvent) {
+    public void on_player_stand_pressed_0() {
         game.standPressed(0);
     }
 
-    public void on_player_stand_pressed_1(MouseEvent mouseEvent) {
+    public void on_player_stand_pressed_1() {
         game.standPressed(1);
     }
 
-    public void on_player_stand_pressed_2(MouseEvent mouseEvent) {
+    public void on_player_stand_pressed_2() {
         game.standPressed(2);
     }
 
-    public void on_player_stand_pressed_3(MouseEvent mouseEvent) {
+    public void on_player_stand_pressed_3() {
         game.standPressed(3);
     }
 
-    public void player_hit_pressed_0(MouseEvent mouseEvent) {
+    public void player_hit_pressed_0() {
         game.hitPressed(0);
     }
 
-    public void player_hit_pressed_1(MouseEvent mouseEvent) {
+    public void player_hit_pressed_1() {
         game.hitPressed(1);
     }
 
-    public void player_hit_pressed_2(MouseEvent mouseEvent) {
+    public void player_hit_pressed_2() {
         game.hitPressed(2);
     }
 
-    public void player_hit_pressed_3(MouseEvent mouseEvent) {
+    public void player_hit_pressed_3() {
         game.hitPressed(3);
     }
 
-    public void player_dont_pressed_0(MouseEvent mouseEvent) {
+    public void player_dont_pressed_0() {
         game.dontDoubleUpPressed(0);
     }
 
-    public void player_dont_pressed_1(MouseEvent mouseEvent) {
+    public void player_dont_pressed_1() {
         game.dontDoubleUpPressed(1);
     }
 
-    public void player_dont_pressed_2(MouseEvent mouseEvent) {
+    public void player_dont_pressed_2() {
         game.dontDoubleUpPressed(2);
     }
 
-    public void player_dont_pressed_3(MouseEvent mouseEvent) {
+    public void player_dont_pressed_3() {
         game.dontDoubleUpPressed(3);
     }
 
