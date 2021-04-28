@@ -202,7 +202,7 @@ public class Controller extends Thread{
         gameStreamOut.writeObject(game);
     }
 
-    public void createGame() {
+    public void create_game() {
         ArrayList<String> players = new ArrayList<String>();
         if(!player_namebox_1.getText().equals("")) players.add(0, player_namebox_1.getText());
         if(!player_namebox_2.getText().equals("")) players.add(1, player_namebox_2.getText());
