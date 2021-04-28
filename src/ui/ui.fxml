@@ -72,7 +72,7 @@
                         <Line endX="1179.0" layoutX="101.0" layoutY="510.0" startX="-100.0" />
                         <Button fx:id="stand_button_0" layoutX="408.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Stand" />
                         <Button fx:id="hit_button_0" layoutX="409.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Hit" />
-                        <Button fx:id="stand_button_1" disable="true" layoutX="682.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_1" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="stand_button_1" disable="true" layoutX="684.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_1" prefHeight="25.0" prefWidth="62.0" text="Stand" />
                         <Button fx:id="hit_button_1" disable="true" layoutX="684.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_1" prefHeight="25.0" prefWidth="62.0" text="Hit" />
                         <Button fx:id="stand_button_2" disable="true" layoutX="939.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_2" prefHeight="25.0" prefWidth="62.0" text="Stand" />
                         <Button fx:id="hit_button_2" disable="true" layoutX="940.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_2" prefHeight="25.0" prefWidth="62.0" text="Hit" />

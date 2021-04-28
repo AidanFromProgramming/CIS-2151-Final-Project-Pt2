@@ -100,7 +100,7 @@ public class GameState extends Thread implements Serializable {
             } else {
                 player++;
             }
-            if (player > players.size()) {
+            if (player >= players.size()) {
                 endRound();
                 return;
             }
