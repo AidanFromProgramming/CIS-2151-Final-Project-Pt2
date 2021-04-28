@@ -119,7 +119,6 @@ public class Controller extends Thread{
         splash_tab.setDisable(true);
         game_tab.setDisable(false);
 
-
         int gameCycleCounter = 0;
 
         try {
@@ -157,9 +156,6 @@ public class Controller extends Thread{
             playerButtonEnables(game.getPlayers().size() > 1 ? game.getPlayers().get(1) : null, hit_button_1, stand_button_1, double_up_1, player_dont_1);
             playerButtonEnables(game.getPlayers().size() > 2 ? game.getPlayers().get(2) : null, hit_button_2, stand_button_2, double_up_2, player_dont_2);
             playerButtonEnables(game.getPlayers().size() > 3 ? game.getPlayers().get(3) : null, hit_button_3, stand_button_3, double_up_3, player_dont_3);
-
-
-
 
             try {
                 Thread.sleep(250);
