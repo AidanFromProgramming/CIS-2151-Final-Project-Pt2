@@ -1,5 +1,6 @@
 package player;
 
+import cards.Card;
 import cards.Hand;
 import exceptions.player.NotEnoughMoneyException;
 import game.GameState;
@@ -12,16 +13,17 @@ public class Player implements Serializable {
     public final Hand hand;
 
     public int money;
-    public boolean doubleUp;
+    public int doubleUp;
     public boolean bankrupt;
     public boolean busted;
-    public boolean standed;
+    public boolean standing;
 
     //Constructor
     public Player(String name) {
         this.name = name;
 
         this.hand = new Hand();
+        doubleUp = 0;
     }
 
     //Methods
@@ -34,11 +36,11 @@ public class Player implements Serializable {
         }
     }
 
-    public String getHandToString(){
+    public String getHandToString() {
         return "Test ♣";
     }
 
-    public String toString(){
+    public String toString() {
         return name;
     }
 }

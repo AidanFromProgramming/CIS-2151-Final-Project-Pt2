@@ -6,6 +6,7 @@ import player.Player;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameState extends Thread implements Serializable {
@@ -33,43 +34,54 @@ public class GameState extends Thread implements Serializable {
             iteration++;
         }
 
-        //Starting Values
-        turn = 0;
-        potValue = 0;
-        initialBet = 1;
-    }
-
-    private void blindBet(int amount) {
-        for (Player player : players) {
-            try {
-                player.bet(this, amount);
-            } catch (NotEnoughMoneyException e) {
-                player.bankrupt = true;
-            }
-        }
+        //Start the Game
+        startNewRound();
     }
 
     public void hitPressed(int playerNumber) {
-
+        Player player = players.get(playerNumber);
+        if (turn > 0 && turn % players.size() == playerNumber + 1) {
+            player.hand.drawCard(deck);
+            if (player.hand.calculateHandValue() > 21) {
+                player.busted = true;
+            }
+            advanceTurn();
+        }
     }
 
     public void standPressed(int playerNumber) {
-
+        Player player = players.get(playerNumber);
+        if (turn > 0 && turn % players.size() == playerNumber + 1) {
+            player.standing = true;
+            advanceTurn();
+        }
     }
 
     public void doubleUpPressed(int playerNumber) {
+        Player player = players.get(playerNumber);
+
+        //Setting the player to be double up
         if (turn == 0) {
-            players.get(playerNumber).doubleUp = true;
+            //Forcing them to draw a card and checking if they busted
+            players.get(playerNumber).hand.drawCard(deck);
+            if (players.get(playerNumber).hand.calculateHandValue() > 21) {
+                players.get(playerNumber).busted = true;
+            }
+
+            players.get(playerNumber).doubleUp = 1;
             initialBet += initialBet;
         }
-        boolean allPlayersSelected = true;
-        for (Player player : players) {
 
-        }
+        checkForLastDoubleUp();
     }
 
     public void dontDoubleUpPressed(int playerNumber) {
+        //Setting the player to be a not double up
+        if (turn == 0) {
+            players.get(playerNumber).doubleUp = -1;
+        }
 
+        checkForLastDoubleUp();
     }
 
     //Getters and setters
@@ -93,27 +105,86 @@ public class GameState extends Thread implements Serializable {
         return running;
     }
 
-    /*
-    while (true) {
-            if (turn == 0) {
+    private void startNewRound() {
+        if (deck.getCards().size() <= 30) {
+            deck.genAndShuffle();
+        }
 
-            } else {
-                switch (turn % players.size()) {
-                    case 0 -> {
-                        //TODO: ASK PLAYER 1 TO HIT OR STAND AND EXECUTE PROPERLY
-                    }
-                    case 1 -> {
-                        //TODO: ASK PLAYER 2 TO HIT OR STAND AND EXECUTE PROPERLY
-                    }
-                    case 2 -> {
-                        //TODO: ASK PLAYER 3 TO HIT OR STAND AND EXECUTE PROPERLY
-                    }
-                    case 3 -> {
-                        //TODO: ASK PLAYER 4 TO HIT OR STAND AND EXECUTE PROPERLY
-                    }
-                }
-                //TODO: IF THERE IS NO PLAYER LEFT STANDING, DIVVY THE POT TO THE WINNERS
+        turn = 0;
+        potValue = 0;
+        initialBet = 1;
+
+        for (Player player : players) {
+            player.hand.drawCard(deck);
+            player.hand.drawCard(deck);
+        }
+    }
+
+    private void checkForLastDoubleUp() {
+        //Checking if this is the last double up
+        boolean allPlayersSelected = true;
+        for (Player player : players) {
+            if (player.bankrupt) continue;
+            if (player.doubleUp == 0) {
+                allPlayersSelected = false;
             }
         }
-     */
+
+        //If it is, make all players pay the initial bet according the the double up values
+        if (allPlayersSelected) {
+            for (Player player : players) {
+                if (player.bankrupt) continue;
+                try {
+                    player.bet(this, initialBet);
+                } catch (NotEnoughMoneyException e) {
+                    player.bankrupt = true;
+                }
+            }
+
+            advanceTurn();
+        }
+    }
+
+    private void advanceTurn() {
+        boolean validPlayer = false;
+        int player = 1;
+        while (!validPlayer) {
+            if (!players.get(player - 1).busted && !players.get(player - 1).standing) {
+                validPlayer = true;
+            } else {
+                player++;
+            }
+            if (player > players.size()) {
+                endRound();
+                return;
+            }
+        }
+        turn = player;
+    }
+
+    private void endRound() {
+        //Divvying up money to highest scoring individuals (very inefficient I know)
+        List<Integer> playerHandValues = new ArrayList<>();
+        for (int i = 0; i < players.size(); i++) {
+            playerHandValues.set(i, players.get(i).hand.calculateHandValue());
+        }
+        int highestHand = 0;
+        for (int i = 0; i < players.size(); i++) {
+            if (playerHandValues.get(i) > highestHand) {
+                highestHand = playerHandValues.get(i);
+            }
+        }
+        List<Integer> playersWithHighestHand = new ArrayList<>();
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).hand.calculateHandValue() == highestHand) {
+                playersWithHighestHand.add(i);
+            }
+        }
+        for (int i : playersWithHighestHand) {
+            players.get(i).money += potValue / playersWithHighestHand.size();
+        }
+
+        //Start new round
+        startNewRound();
+    }
 }

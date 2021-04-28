@@ -20,42 +20,39 @@ public class Card implements Serializable {
     public static cardFace getCardFace(int ordinal) {
         switch (ordinal) {
             case 0 -> {
-                return cardFace.one;
-            }
-            case 1 -> {
                 return cardFace.two;
             }
-            case 2 -> {
+            case 1 -> {
                 return cardFace.three;
             }
-            case 3 -> {
+            case 2 -> {
                 return cardFace.four;
             }
-            case 4 -> {
+            case 3 -> {
                 return cardFace.five;
             }
-            case 5 -> {
+            case 4 -> {
                 return cardFace.six;
             }
-            case 6 -> {
+            case 5 -> {
                 return cardFace.seven;
             }
-            case 7 -> {
+            case 6 -> {
                 return cardFace.eight;
             }
-            case 8 -> {
+            case 7 -> {
                 return cardFace.nine;
             }
-            case 9 -> {
+            case 8 -> {
                 return cardFace.jack;
             }
-            case 10 -> {
+            case 9 -> {
                 return cardFace.queen;
             }
-            case 11 -> {
+            case 10 -> {
                 return cardFace.king;
             }
-            case 12 -> {
+            case 11 -> {
                 return cardFace.ace;
             }
         }
