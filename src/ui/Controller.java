@@ -13,6 +13,10 @@ import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 public class Controller extends Thread{
     
@@ -296,10 +300,48 @@ public class Controller extends Thread{
         game.dontDoubleUpPressed(3);
     }
 
+    public static class GlobalExceptionHandler {
+
+        public static void main(String[] args) {
+
+            Handler globalExceptionHandler = new Handler();
+            Thread.setDefaultUncaughtExceptionHandler(globalExceptionHandler);
+            new GlobalExceptionHandler().performArithmeticOperation(10, 0);
+        }
+
+        public int performArithmeticOperation(int num1, int num2) {
+            return num1/num2;
+        }
+    }
+
+    // https://www.baeldung.com/java-global-exception-handler
+    static class Handler extends java.util.logging.Handler implements Thread.UncaughtExceptionHandler {
+
+        public void uncaughtException(Thread t, Throwable e) {
+            displayError(String.format("Uncaught Exception!\n%1s", e));
+        }
+
+        @Override
+        public void publish(LogRecord record) {
+
+        }
+
+        @Override
+        public void flush() {
+
+        }
+
+        @Override
+        public void close() throws SecurityException {
+
+        }
+    }
+
     //Error dialog
-    private void displayError(String error){
+    private static void displayError(String error){
         Dialog<String> dialog = new Dialog<String>();
         dialog.setTitle("Error!");
+        dialog.setResizable(true);
         ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(type);
         dialog.setContentText(String.format("Error: %1s", error));

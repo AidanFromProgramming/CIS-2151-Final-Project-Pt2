@@ -21,9 +21,7 @@ public class Hand implements Serializable {
 
     //Methods
     public void drawCard(Deck deck) {
-        this.cards.add(deck.getCards().get(0));
-        deck.getCards().remove(0);
-
+        this.cards.add(deck.getCards().remove(0));
         sortHand();
     }
 
