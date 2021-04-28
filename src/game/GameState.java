@@ -149,7 +149,7 @@ public class GameState extends Thread implements Serializable {
         boolean validPlayer = false;
         int player = 1;
         while (!validPlayer) {
-            if (!players.get(player - 1).busted && !players.get(player - 1).standing) {
+            if (!players.get(player - 1).busted && !players.get(player - 1).standing && !players.get(player - 1).bankrupt) {
                 validPlayer = true;
             } else {
                 player++;
