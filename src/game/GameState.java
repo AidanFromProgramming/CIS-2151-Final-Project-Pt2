@@ -14,6 +14,7 @@ public class GameState extends Thread implements Serializable {
     public int potValue;
     private final List<Player> players;
     private final Deck deck;
+    private final Player dealer;
     private boolean running;
     private int turn;
     private int initialBet;
@@ -23,6 +24,9 @@ public class GameState extends Thread implements Serializable {
         //Setting up the deck
         deck = new Deck(6);
         deck.genAndShuffle();
+
+        //Dealer
+        dealer = new Player("Dealer");
 
         //Setting up players
         players = new ArrayList<>();
@@ -102,6 +106,13 @@ public class GameState extends Thread implements Serializable {
         for (Player player : players) {
             player.hand.drawCard(deck);
             player.hand.drawCard(deck);
+        }
+        dealer.hand.drawCard(deck);
+        dealer.hand.drawCard(deck);
+
+        if (dealer.hand.calculateHandValue() <= 10) {
+            initialBet += initialBet;
+            dealer.hand.drawCard(deck);
         }
     }
 
