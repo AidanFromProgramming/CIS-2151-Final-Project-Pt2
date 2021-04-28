@@ -92,14 +92,15 @@ public class GameState extends Thread implements Serializable {
 
     public void advanceTurn() {
         boolean validPlayer = false;
-        int player = 0;
+        int player = turn + 1;
         while (!validPlayer) {
+            if (player >= players.size()) player = 0;
             if (!players.get(player).busted && !players.get(player).standing && !players.get(player).bankrupt) {
                 validPlayer = true;
             } else {
                 player++;
             }
-            if (player >= players.size()) {
+            if (player == turn + 1) {
                 endRound();
                 return;
             }
@@ -138,6 +139,12 @@ public class GameState extends Thread implements Serializable {
                 player.standing = false;
             }
         }
+
+        //Clearing player hands
+        for (Player player : players) {
+            player.hand.clear();
+        }
+        dealer.clear();
 
         //Start new round
         startNewRound();
