@@ -78,13 +78,13 @@ public class GameState extends Thread implements Serializable {
         //If it is, make all players pay the initial bet according the the double up values
         if (allPlayersSelected) {
             for (Player player : players) {
-                if (player.bankrupt) continue;
-                if (player.busted) continue;
                 try {
                     player.bet(this, initialBet);
                 } catch (NotEnoughMoneyException e) {
                     player.bankrupt = true;
                 }
+                if (player.bankrupt) continue;
+                if (player.busted) continue;
             }
 
             advanceTurn();

@@ -64,7 +64,11 @@ public class Hand implements Serializable {
     }
 
     public void sort() {
-        cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
+        try {
+            cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
+        } catch (NullPointerException e) {
+            sort();
+        }
     }
 
     public void clear() {
