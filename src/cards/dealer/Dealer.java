@@ -19,7 +19,7 @@ public class Dealer extends Hand {
                 stringBuilder.append(card.getSuit().toString());
                 stringBuilder.append("\n");
             } else {
-                stringBuilder.append("[BACK OF CARD]");
+                stringBuilder.append("[BACK OF CARD]\n");
             }
             iteration++;
         }

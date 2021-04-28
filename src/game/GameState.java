@@ -111,11 +111,11 @@ public class GameState extends Thread implements Serializable {
         //Divvying up money to highest scoring individuals (very inefficient I know)
         List<Integer> playerHandValues = new ArrayList<>();
         for (int i = 0; i < players.size(); i++) {
-            playerHandValues.set(i, players.get(i).hand.calculateHandValue());
+            playerHandValues.add(i, players.get(i).hand.calculateHandValue());
         }
         int highestHand = 0;
         for (int i = 0; i < players.size(); i++) {
-            if (playerHandValues.get(i) > highestHand) {
+            if (playerHandValues.get(i) > highestHand && !players.get(i).busted && !players.get(i).bankrupt) {
                 highestHand = playerHandValues.get(i);
             }
         }
