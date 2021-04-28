@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.WindowEvent;
 import player.Player;
 
 import java.io.*;
@@ -23,7 +22,6 @@ public class Controller extends Thread{
     public Button load_game_option_button;
     public Button new_game_option_button;
     public AnchorPane main_stage;
-    public GridPane game_grid_plane;
     public Text player_name_0;
     public Text player_name_1;
     public Text player_name_2;
@@ -62,6 +60,10 @@ public class Controller extends Thread{
     public Text player_money_3;
     public Text current_player_text;
     public Text current_pot_text;
+    public Text card_value_0;
+    public Text card_value_1;
+    public Text card_value_2;
+    public Text card_value_3;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -71,29 +73,13 @@ public class Controller extends Thread{
 
     GameState game = null;
 
-
-
     @FXML
     public void initialize() {
         BackgroundFill background_fill = new BackgroundFill(Paint.valueOf(Color.color(0.275,0.604, 0.196).toString()),
                 CornerRadii.EMPTY, Insets.EMPTY);
         Background background = new Background(background_fill);
-        main_stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
         main_stage.setBackground(background);
         tab_plane.setBackground(background);
-    }
-
-
-    // https://stackoverflow.com/questions/26619566/javafx-stage-close-handler
-    private void closeWindowEvent(WindowEvent event){
-        System.out.println("Window close request ...");
-        try{
-            saveGame();
-        }catch (IOException e){
-            System.out.println(e.toString());
-        }
-
-        System.out.println("Game successfully saved");
     }
 
     public void startGame() {
@@ -159,11 +145,20 @@ public class Controller extends Thread{
             current_player_text.setText("Current Player: " + (game.turn >= 0 ? game.getPlayers().get(game.turn).name : "Choose double up"));
             current_pot_text.setText("Current Pot: " + game.potValue);
 
+            //Update card values
+            String formatString = "Card Values: %1s/21";
+            card_value_0.setText(game.getPlayers().size() > 0 ? String.format(formatString, game.getPlayers().get(0).hand.value()) : "");
+            card_value_1.setText(game.getPlayers().size() > 1 ? String.format(formatString, game.getPlayers().get(1).hand.value()) : "");
+            card_value_2.setText(game.getPlayers().size() > 2 ? String.format(formatString, game.getPlayers().get(2).hand.value()) : "");
+            card_value_3.setText(game.getPlayers().size() > 3 ? String.format(formatString, game.getPlayers().get(3).hand.value()) : "");
+
             //Update buttons
             playerButtonEnables(game.getPlayers().get(0), hit_button_0, stand_button_0, double_up_0, player_dont_0);
             playerButtonEnables(game.getPlayers().size() > 1 ? game.getPlayers().get(1) : null, hit_button_1, stand_button_1, double_up_1, player_dont_1);
             playerButtonEnables(game.getPlayers().size() > 2 ? game.getPlayers().get(2) : null, hit_button_2, stand_button_2, double_up_2, player_dont_2);
             playerButtonEnables(game.getPlayers().size() > 3 ? game.getPlayers().get(3) : null, hit_button_3, stand_button_3, double_up_3, player_dont_3);
+
+
 
 
             try {
