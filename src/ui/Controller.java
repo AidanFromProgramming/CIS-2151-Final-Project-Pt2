@@ -48,6 +48,10 @@ public class Controller {
     public Text player_hand_1;
     public Text player_hand_2;
     public Text player_hand_3;
+    public Button double_up_0;
+    public Button double_up_1;
+    public Button double_up_2;
+    public Button double_up_3;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -153,4 +157,44 @@ public class Controller {
         fileStreamOut = new FileOutputStream(gameFile.getAbsolutePath());
         unlockCreateGame();
     }
+
+    //Button press handlers
+
+    public void on_double_up_0(MouseEvent mouseEvent) {
+    }
+
+    public void on_double_up_1(MouseEvent mouseEvent) {
+    }
+
+    public void on_double_up_2(MouseEvent mouseEvent) {
+    }
+
+    public void on_double_up_3(MouseEvent mouseEvent) {
+    }
+
+    public void on_player_stand_pressed_0(MouseEvent mouseEvent) {
+    }
+
+    public void on_player_stand_pressed_1(MouseEvent mouseEvent) {
+    }
+
+    public void on_player_stand_pressed_2(MouseEvent mouseEvent) {
+    }
+
+    public void on_player_stand_pressed_3(MouseEvent mouseEvent) {
+    }
+
+    public void player_hit_pressed_0(MouseEvent mouseEvent) {
+    }
+
+    public void player_hit_pressed_1(MouseEvent mouseEvent) {
+    }
+
+    public void player_hit_pressed_2(MouseEvent mouseEvent) {
+    }
+
+    public void player_hit_pressed_3(MouseEvent mouseEvent) {
+    }
+
+
 }

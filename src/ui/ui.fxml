@@ -70,17 +70,21 @@
                         <Line endX="-100.0" endY="676.0" layoutX="1124.0" layoutY="17.0" startX="-100.0" startY="-29.0" />
                         <Text fx:id="player_hand_0" layoutX="295.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
                         <Line endX="1179.0" layoutX="101.0" layoutY="510.0" startX="-100.0" />
-                        <Button fx:id="stand_button_0" layoutX="408.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
-                        <Button fx:id="hit_button_0" layoutX="409.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
-                        <Button fx:id="stand_button_1" layoutX="682.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
-                        <Button fx:id="hit_button_1" layoutX="683.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
-                        <Button fx:id="stand_button_2" layoutX="939.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
-                        <Button fx:id="hit_button_2" layoutX="940.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
-                        <Button fx:id="stand_button_3" layoutX="1187.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Stand" />
-                        <Button fx:id="hit_button_3" layoutX="1188.0" layoutY="546.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_0" layoutX="408.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_0" layoutX="409.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_1" layoutX="682.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_1" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_1" layoutX="684.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_1" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_2" layoutX="939.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_2" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_2" layoutX="940.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_2" prefHeight="25.0" prefWidth="62.0" text="Hit" />
+                        <Button fx:id="stand_button_3" layoutX="1187.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_3" prefHeight="25.0" prefWidth="62.0" text="Stand" />
+                        <Button fx:id="hit_button_3" layoutX="1188.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_3" prefHeight="25.0" prefWidth="62.0" text="Hit" />
                         <Text fx:id="player_hand_1" layoutX="552.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
                         <Text fx:id="player_hand_2" layoutX="808.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
                         <Text fx:id="player_hand_3" layoutX="1064.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Button fx:id="double_up_0" layoutX="395.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_0" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
+                        <Button fx:id="double_up_1" layoutX="670.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_1" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
+                        <Button fx:id="double_up_2" layoutX="927.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_2" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
+                        <Button fx:id="double_up_3" layoutX="1174.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_3" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
                      </children></AnchorPane>
             </content>
           </Tab>
