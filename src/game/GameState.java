@@ -36,6 +36,7 @@ public class GameState extends Thread implements Serializable {
             players.add(new Player(playerNames[iteration]));
             iteration++;
         }
+        running = true;
     }
 
 

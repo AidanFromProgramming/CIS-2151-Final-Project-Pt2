@@ -54,6 +54,10 @@ public class Controller extends Thread{
     public Text player_hand_2;
     public Text player_hand_3;
     public Text dealer_hand;
+    public Text player_money_0;
+    public Text player_money_1;
+    public Text player_money_2;
+    public Text player_money_3;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -109,6 +113,7 @@ public class Controller extends Thread{
 
     @Override
     public void run() {
+
         tab_plane.getSelectionModel().select(game_tab);
         splash_tab.setDisable(true);
         game_tab.setDisable(false);
@@ -131,6 +136,11 @@ public class Controller extends Thread{
             player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).hand.toString() : "");
             player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).hand.toString() : "");
 
+            player_money_0.setText("Money: " + game.getPlayers().get(0).money);
+            player_money_1.setText(game.getPlayers().size() > 1 ? "Money: " + game.getPlayers().get(1).money : "");
+            player_money_2.setText(game.getPlayers().size() > 2 ? "Money: " + game.getPlayers().get(2).money : "");
+            player_money_3.setText(game.getPlayers().size() > 3 ? "Money: " + game.getPlayers().get(3).money : "");
+
             try {
                 Thread.sleep(250);
             } catch (InterruptedException e) {
@@ -140,6 +150,7 @@ public class Controller extends Thread{
             if(gameCycleCounter > 30 * 4){  // Run autosave every 30 seconds
                 try {
                     saveGame();
+                    gameCycleCounter = 0;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -193,6 +204,9 @@ public class Controller extends Thread{
             gameStreamIn = new ObjectInputStream(fileStreamIn);
         } catch (StreamCorruptedException e){
             displayError("Invalid Save File Selected!");
+            return;
+        }catch (EOFException e){
+            displayError(String.format("Save File Corrupted! (%1s)", e));
             return;
         }
         try {

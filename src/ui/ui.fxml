@@ -68,7 +68,7 @@
                         <Line endX="-100.0" endY="676.0" layoutX="612.0" layoutY="15.0" startX="-100.0" startY="-17.0" />
                         <Line endX="-100.0" endY="676.0" layoutX="868.0" layoutY="23.0" startX="-100.0" startY="-23.0" />
                         <Line endX="-100.0" endY="676.0" layoutX="1124.0" layoutY="17.0" startX="-100.0" startY="-29.0" />
-                        <Text fx:id="player_hand_0" layoutX="295.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Text fx:id="player_hand_0" layoutX="295.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: No update" wrappingWidth="176.13671875" />
                         <Line endX="1179.0" layoutX="101.0" layoutY="510.0" startX="-100.0" />
                         <Button fx:id="stand_button_0" layoutX="408.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Stand" />
                         <Button fx:id="hit_button_0" layoutX="409.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_0" prefHeight="25.0" prefWidth="62.0" text="Hit" />
@@ -78,9 +78,9 @@
                         <Button fx:id="hit_button_2" disable="true" layoutX="940.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_2" prefHeight="25.0" prefWidth="62.0" text="Hit" />
                         <Button fx:id="stand_button_3" disable="true" layoutX="1187.0" layoutY="587.0" mnemonicParsing="false" onMouseClicked="#on_player_stand_pressed_3" prefHeight="25.0" prefWidth="62.0" text="Stand" />
                         <Button fx:id="hit_button_3" disable="true" layoutX="1188.0" layoutY="546.0" mnemonicParsing="false" onMouseClicked="#player_hit_pressed_3" prefHeight="25.0" prefWidth="62.0" text="Hit" />
-                        <Text fx:id="player_hand_1" layoutX="552.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
-                        <Text fx:id="player_hand_2" layoutX="808.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
-                        <Text fx:id="player_hand_3" layoutX="1064.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Text fx:id="player_hand_1" layoutX="552.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: No update" wrappingWidth="176.13671875" />
+                        <Text fx:id="player_hand_2" layoutX="808.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: No update" wrappingWidth="176.13671875" />
+                        <Text fx:id="player_hand_3" layoutX="1064.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: No update" wrappingWidth="176.13671875" />
                         <Button fx:id="double_up_0" layoutX="395.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_0" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
                         <Button fx:id="double_up_1" disable="true" layoutX="670.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_1" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
                         <Button fx:id="double_up_2" disable="true" layoutX="927.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#on_double_up_2" prefHeight="25.0" prefWidth="89.0" text="Double Up" />
@@ -89,8 +89,12 @@
                         <Button fx:id="player_dont_1" disable="true" layoutX="624.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_1" text="Don't" />
                         <Button fx:id="player_dont_2" disable="true" layoutX="881.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_2" text="Don't" />
                         <Button fx:id="player_dont_3" disable="true" layoutX="1129.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_3" text="Don't" />
-                        <Text fx:id="dealer_hand" layoutX="46.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Text fx:id="dealer_hand" layoutX="46.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: No update" wrappingWidth="176.13671875" />
                         <Line endX="1185.0" layoutX="97.0" layoutY="67.0" startX="-100.0" />
+                        <Text fx:id="player_money_0" layoutX="295.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
+                        <Text fx:id="player_money_1" layoutX="552.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
+                        <Text fx:id="player_money_2" layoutX="808.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
+                        <Text fx:id="player_money_3" layoutX="1064.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money: NaN" wrappingWidth="83.13671875" />
                      </children></AnchorPane>
             </content>
           </Tab>

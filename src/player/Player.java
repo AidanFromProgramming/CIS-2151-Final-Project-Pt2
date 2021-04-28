@@ -12,7 +12,7 @@ public class Player implements Serializable {
     public final String name;
     public final Hand hand;
 
-    public int money;
+    public int money = 100;
     public int doubleUp;
     public boolean bankrupt;
     public boolean busted;

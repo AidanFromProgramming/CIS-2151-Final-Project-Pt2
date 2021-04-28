@@ -60,7 +60,7 @@ public class Hand implements Serializable {
             stringBuilder.append(card.getFace().toString());
             stringBuilder.append(" of ");
             stringBuilder.append(card.getSuit().toString());
-            stringBuilder.append(", ");
+            stringBuilder.append("\n");
         }
 
         return stringBuilder.toString();
