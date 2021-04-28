@@ -3,7 +3,9 @@ package cards;
 import cards.enums.cardFace;
 import cards.enums.cardSuit;
 
-public class Card {
+import java.io.Serializable;
+
+public class Card implements Serializable {
     //Fields
     private final cardFace face;
     private final cardSuit suit;
