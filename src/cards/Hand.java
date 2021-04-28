@@ -1,17 +1,13 @@
 package cards;
 
-import cards.enums.cardFace;
-import cards.enums.cardSuit;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Hand implements Serializable {
     //Fields
-    private List<Card> cards;
+    private final List<Card> cards;
 
     //Constructor
     public Hand() {
@@ -51,17 +47,22 @@ public class Hand implements Serializable {
         return handValue;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Card card : cards) {
+            stringBuilder.append(card.getFace().toString());
+            stringBuilder.append(" of ");
+            stringBuilder.append(card.getSuit().toString());
+            stringBuilder.append(',');
+        }
+
+        return stringBuilder.toString();
+    }
+
     private void sortHand() {
         cards.sort(Comparator.comparing(Card::getFace));
         cards.sort(Comparator.comparing(Card::getSuit));
-    }
-
-    //Getters and Setters
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
     }
 }

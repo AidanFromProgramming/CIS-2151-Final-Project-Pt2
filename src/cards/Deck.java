@@ -6,18 +6,13 @@ import java.util.List;
 
 public class Deck implements Serializable {
     //Fields
-    private List<Card> cards;
+    private final List<Card> cards;
     private final int size; //NOTE: Size means how many decks there are in this deck. Simply the maximum.
 
     //Constructor
     public Deck(int size) {
         this.size = size;
         cards = new ArrayList<>();
-    }
-    public Deck() {
-        size = 1;
-        cards = new ArrayList<>();
-        generateCards();
     }
 
     //For every pace in the deck, that card is swapped with another random card in the deck
@@ -76,9 +71,5 @@ public class Deck implements Serializable {
     //Getters + setters
     public List<Card> getCards() {
         return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
     }
 }
