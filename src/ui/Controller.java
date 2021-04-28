@@ -10,13 +10,11 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.WindowEvent;
+import player.Player;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.logging.Handler;
 import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 public class Controller extends Thread{
     
@@ -104,17 +102,27 @@ public class Controller extends Thread{
         player_name_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).toString() : "");
 
         //Configure player buttons
-        buttonConfig(stand_button_1, stand_button_2, stand_button_3);
-        buttonConfig(hit_button_1, hit_button_2, hit_button_3);
-        buttonConfig(double_up_1, double_up_2, double_up_3);
-        buttonConfig(player_dont_1, player_dont_2, player_dont_3);
+        playerControlsConfig(stand_button_1, stand_button_2, stand_button_3);
+        playerControlsConfig(hit_button_1, hit_button_2, hit_button_3);
+        playerControlsConfig(double_up_1, double_up_2, double_up_3);
+        playerControlsConfig(player_dont_1, player_dont_2, player_dont_3);
         this.start();
     }
 
-    private void buttonConfig(Button button_1, Button button_2, Button button_3) {
-        button_1.setDisable(!(game.getPlayers().size() > 1));
-        button_2.setDisable(!(game.getPlayers().size() > 2));
-        button_3.setDisable(!(game.getPlayers().size() > 3));
+    private void playerControlsConfig(Button button_1, Button button_2, Button button_3) {
+        button_1.setVisible(game.getPlayers().size() > 1);
+        button_2.setVisible(game.getPlayers().size() > 2);
+        button_3.setVisible(game.getPlayers().size() > 3);
+    }
+
+    private void playerButtonEnables(Player player, Button hit, Button stand, Button doubleUp, Button notDoubleUp){
+        if (player == null){
+            return;
+        }
+        hit.setDisable(!(game.turn >= 0 && game.getPlayers().get(game.turn).name.equals(player.name)));
+        stand.setDisable(!(game.turn >= 0 && game.getPlayers().get(game.turn).name.equals(player.name)));
+        doubleUp.setDisable(!(game.turn == -1 && player.doubleUp == 0));
+        notDoubleUp.setDisable(!(game.turn == -1 && player.doubleUp == 0));
     }
 
     @Override
@@ -142,12 +150,20 @@ public class Controller extends Thread{
             player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).hand.toString() : "");
             player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).hand.toString() : "");
 
+            // Update money values
             player_money_0.setText("Money: " + game.getPlayers().get(0).money);
             player_money_1.setText(game.getPlayers().size() > 1 ? "Money: " + game.getPlayers().get(1).money : "");
             player_money_2.setText(game.getPlayers().size() > 2 ? "Money: " + game.getPlayers().get(2).money : "");
             player_money_3.setText(game.getPlayers().size() > 3 ? "Money: " + game.getPlayers().get(3).money : "");
-            current_player_text.setText("Current Player: " + game.getPlayers().get(game.turn).name);
+            current_player_text.setText("Current Player: " + (game.turn >= 0 ? game.getPlayers().get(game.turn).name : "Choose double up"));
             current_pot_text.setText("Current Pot: " + game.potValue);
+
+            //Update buttons
+            playerButtonEnables(game.getPlayers().get(0), hit_button_0, stand_button_0, double_up_0, player_dont_0);
+            playerButtonEnables(game.getPlayers().size() > 1 ? game.getPlayers().get(1) : null, hit_button_1, stand_button_1, double_up_1, player_dont_1);
+            playerButtonEnables(game.getPlayers().size() > 2 ? game.getPlayers().get(2) : null, hit_button_2, stand_button_2, double_up_2, player_dont_2);
+            playerButtonEnables(game.getPlayers().size() > 3 ? game.getPlayers().get(3) : null, hit_button_3, stand_button_3, double_up_3, player_dont_3);
+
 
             try {
                 Thread.sleep(250);

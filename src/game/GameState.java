@@ -38,69 +38,12 @@ public class GameState extends Thread implements Serializable {
         running = true;
     }
 
-
-    public void hitPressed(int playerNumber) {
-        Player player = players.get(playerNumber);
-        if (turn > 0 && turn % players.size() == playerNumber + 1) {
-            player.hand.drawCard(deck);
-            player.hand.sort();
-            if (player.hand.calculateHandValue() > 21) {
-                player.busted = true;
-            }
-            advanceTurn();
-        }
-    }
-
-    public void standPressed(int playerNumber) {
-        Player player = players.get(playerNumber);
-        if (turn > 0 && turn % players.size() == playerNumber + 1) {
-            player.standing = true;
-            advanceTurn();
-        }
-    }
-
-    public void doubleUpPressed(int playerNumber) {
-
-        //Setting the player to be double up
-        if (turn == 0 && players.get(playerNumber).doubleUp == 0) {
-            //Forcing them to draw a card and checking if they busted
-            players.get(playerNumber).hand.drawCard(deck);
-            players.get(playerNumber).hand.sort();
-            if (players.get(playerNumber).hand.calculateHandValue() > 21) {
-                players.get(playerNumber).busted = true;
-            }
-
-            players.get(playerNumber).doubleUp = 1;
-            initialBet += initialBet;
-        }
-
-        checkForLastDoubleUp();
-    }
-
-    public void dontDoubleUpPressed(int playerNumber) {
-        //Setting the player to be a not double up
-        if (turn == 0 && players.get(playerNumber).doubleUp == 0) {
-            players.get(playerNumber).doubleUp = -1;
-        }
-
-        checkForLastDoubleUp();
-    }
-
-    //Getters and setters
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public boolean isRunning() {
-        return running;
-    }
-
     public void startNewRound() {
         if (deck.getCards().size() <= 30) {
             deck.genAndShuffle();
         }
 
-        turn = 0;
+        turn = -1;
         potValue = 0;
         initialBet = 1;
 
@@ -197,5 +140,61 @@ public class GameState extends Thread implements Serializable {
 
         //Start new round
         startNewRound();
+    }
+
+    public void hitPressed(int playerNumber) {
+        Player player = players.get(playerNumber);
+        if (turn >= 0 && turn % players.size() == playerNumber + 1) {
+            player.hand.drawCard(deck);
+            player.hand.sort();
+            if (player.hand.calculateHandValue() > 21) {
+                player.busted = true;
+            }
+            advanceTurn();
+        }
+    }
+
+    public void standPressed(int playerNumber) {
+        Player player = players.get(playerNumber);
+        if (turn > 0 && turn % players.size() == playerNumber + 1) {
+            player.standing = true;
+            advanceTurn();
+        }
+    }
+
+    public void doubleUpPressed(int playerNumber) {
+
+        //Setting the player to be double up
+        if (turn == -1 && players.get(playerNumber).doubleUp == 0) {
+            //Forcing them to draw a card and checking if they busted
+            players.get(playerNumber).hand.drawCard(deck);
+            players.get(playerNumber).hand.sort();
+            if (players.get(playerNumber).hand.calculateHandValue() > 21) {
+                players.get(playerNumber).busted = true;
+            }
+
+            players.get(playerNumber).doubleUp = 1;
+            initialBet += initialBet;
+        }
+
+        checkForLastDoubleUp();
+    }
+
+    public void dontDoubleUpPressed(int playerNumber) {
+        //Setting the player to be a not double up
+        if (turn == -1 && players.get(playerNumber).doubleUp == 0) {
+            players.get(playerNumber).doubleUp = -1;
+        }
+
+        checkForLastDoubleUp();
+    }
+
+    //Getters and setters
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public boolean isRunning() {
+        return running;
     }
 }
