@@ -53,6 +53,7 @@ public class Controller extends Thread{
     public Text player_hand_1;
     public Text player_hand_2;
     public Text player_hand_3;
+    public Text dealer_hand;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -97,7 +98,6 @@ public class Controller extends Thread{
         buttonConfig(hit_button_1, hit_button_2, hit_button_3);
         buttonConfig(double_up_1, double_up_2, double_up_3);
         buttonConfig(player_dont_1, player_dont_2, player_dont_3);
-
         this.start();
     }
 
@@ -125,10 +125,11 @@ public class Controller extends Thread{
         while(game.isRunning()) {
 
             // Update Hands
-            player_hand_0.setText(game.getPlayers().get(0).getHandToString());
-            player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).getHandToString() : "");
-            player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).getHandToString() : "");
-            player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).getHandToString() : "");
+            //dealer_hand.setText(game.);
+            player_hand_0.setText(game.getPlayers().get(0).hand.toString());
+            player_hand_1.setText(game.getPlayers().size() > 1 ? game.getPlayers().get(1).hand.toString() : "");
+            player_hand_2.setText(game.getPlayers().size() > 2 ? game.getPlayers().get(2).hand.toString() : "");
+            player_hand_3.setText(game.getPlayers().size() > 3 ? game.getPlayers().get(3).hand.toString() : "");
 
             try {
                 Thread.sleep(250);
@@ -174,6 +175,7 @@ public class Controller extends Thread{
         if(!player_namebox_3.getText().equals("")) players.add(2, player_namebox_3.getText());
         if(!player_namebox_4.getText().equals("")) players.add(3, player_namebox_4.getText());
         game = new GameState(players.toArray(new String[0]));
+        game.startNewRound();
         startGame();
     }
 

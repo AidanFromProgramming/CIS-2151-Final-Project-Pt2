@@ -12,6 +12,7 @@ import java.util.List;
 public class Hand implements Serializable {
     //Fields
     private List<Card> cards;
+    private final StringBuilder display = new StringBuilder();
 
     //Constructor
     public Hand() {
@@ -63,5 +64,13 @@ public class Hand implements Serializable {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public String toString(){
+        display.delete(0, display.length());
+        for (Card card: cards){
+            display.append(String.format("%1s %2s", card.getFace(), card.getSuit()));
+        }
+        return display.toString();
     }
 }

@@ -33,9 +33,10 @@ public class GameState extends Thread implements Serializable {
             players.add(new Player(playerNames[iteration]));
             iteration++;
         }
+    }
 
-        //Start the Game
-        startNewRound();
+    public void restart(){
+
     }
 
     public void hitPressed(int playerNumber) {
@@ -105,7 +106,7 @@ public class GameState extends Thread implements Serializable {
         return running;
     }
 
-    private void startNewRound() {
+    public void startNewRound() {
         if (deck.getCards().size() <= 30) {
             deck.genAndShuffle();
         }
@@ -120,7 +121,7 @@ public class GameState extends Thread implements Serializable {
         }
     }
 
-    private void checkForLastDoubleUp() {
+    public void checkForLastDoubleUp() {
         //Checking if this is the last double up
         boolean allPlayersSelected = true;
         for (Player player : players) {
@@ -145,7 +146,7 @@ public class GameState extends Thread implements Serializable {
         }
     }
 
-    private void advanceTurn() {
+    public void advanceTurn() {
         boolean validPlayer = false;
         int player = 1;
         while (!validPlayer) {
@@ -162,7 +163,7 @@ public class GameState extends Thread implements Serializable {
         turn = player;
     }
 
-    private void endRound() {
+    public void endRound() {
         //Divvying up money to highest scoring individuals (very inefficient I know)
         List<Integer> playerHandValues = new ArrayList<>();
         for (int i = 0; i < players.size(); i++) {

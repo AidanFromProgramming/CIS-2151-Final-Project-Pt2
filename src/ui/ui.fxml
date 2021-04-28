@@ -89,6 +89,8 @@
                         <Button fx:id="player_dont_1" disable="true" layoutX="624.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_1" text="Don't" />
                         <Button fx:id="player_dont_2" disable="true" layoutX="881.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_2" text="Don't" />
                         <Button fx:id="player_dont_3" disable="true" layoutX="1129.0" layoutY="637.0" mnemonicParsing="false" onMouseClicked="#player_dont_pressed_3" text="Don't" />
+                        <Text fx:id="dealer_hand" layoutX="46.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="176.13671875" />
+                        <Line endX="1185.0" layoutX="97.0" layoutY="67.0" startX="-100.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
