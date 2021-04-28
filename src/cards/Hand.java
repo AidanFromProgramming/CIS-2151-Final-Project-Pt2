@@ -22,7 +22,6 @@ public class Hand implements Serializable {
     //Methods
     public void drawCard(Deck deck) {
         this.cards.add(deck.getCards().remove(0));
-        sortHand();
     }
 
     public int calculateHandValue() {
@@ -64,7 +63,11 @@ public class Hand implements Serializable {
         return stringBuilder.toString();
     }
 
-    private void sortHand() {
+    public void sort() {
         cards.sort(Comparator.comparingInt(o -> o.getFace().ordinal()));
+    }
+
+    public void clear() {
+        cards.clear();
     }
 }

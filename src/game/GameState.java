@@ -6,7 +6,6 @@ import player.Player;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class GameState extends Thread implements Serializable {
@@ -44,6 +43,7 @@ public class GameState extends Thread implements Serializable {
         Player player = players.get(playerNumber);
         if (turn > 0 && turn % players.size() == playerNumber + 1) {
             player.hand.drawCard(deck);
+            player.hand.sort();
             if (player.hand.calculateHandValue() > 21) {
                 player.busted = true;
             }
@@ -65,6 +65,7 @@ public class GameState extends Thread implements Serializable {
         if (turn == 0 && players.get(playerNumber).doubleUp == 0) {
             //Forcing them to draw a card and checking if they busted
             players.get(playerNumber).hand.drawCard(deck);
+            players.get(playerNumber).hand.sort();
             if (players.get(playerNumber).hand.calculateHandValue() > 21) {
                 players.get(playerNumber).busted = true;
             }
@@ -106,13 +107,16 @@ public class GameState extends Thread implements Serializable {
         for (Player player : players) {
             player.hand.drawCard(deck);
             player.hand.drawCard(deck);
+            player.hand.sort();
         }
         dealer.hand.drawCard(deck);
         dealer.hand.drawCard(deck);
+        dealer.hand.sort();
 
         if (dealer.hand.calculateHandValue() <= 10) {
             initialBet += initialBet;
             dealer.hand.drawCard(deck);
+            dealer.hand.sort();
         }
     }
 
@@ -121,6 +125,7 @@ public class GameState extends Thread implements Serializable {
         boolean allPlayersSelected = true;
         for (Player player : players) {
             if (player.bankrupt) continue;
+            if (player.busted) continue;
             if (player.doubleUp == 0) {
                 allPlayersSelected = false;
                 break;
@@ -131,6 +136,7 @@ public class GameState extends Thread implements Serializable {
         if (allPlayersSelected) {
             for (Player player : players) {
                 if (player.bankrupt) continue;
+                if (player.busted) continue;
                 try {
                     player.bet(this, initialBet);
                 } catch (NotEnoughMoneyException e) {
@@ -179,6 +185,14 @@ public class GameState extends Thread implements Serializable {
         }
         for (int i : playersWithHighestHand) {
             players.get(i).money += potValue / playersWithHighestHand.size();
+        }
+
+        //Clear hands & undouble up
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).hand.clear();
+            players.get(i).doubleUp = 0;
+            players.get(i).busted = false;
+            players.get(i).standing = false;
         }
 
         //Start new round
