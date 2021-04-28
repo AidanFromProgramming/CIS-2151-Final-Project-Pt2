@@ -10,7 +10,10 @@ public class Player {
     public final Hand hand;
 
     public int money;
+    public boolean doubleUp;
     public boolean bankrupt;
+    public boolean busted;
+    public boolean standed;
 
     //Constructor
     public Player(String name) {

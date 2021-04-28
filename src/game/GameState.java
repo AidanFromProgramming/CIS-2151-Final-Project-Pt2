@@ -10,15 +10,13 @@ import java.util.List;
 
 public class GameState extends Thread implements Serializable {
     //Fields
+    public int potValue;
+
+    private int turn;
     private List<Player> players;
     private Deck deck;
     private boolean running;
-    private int playerTurn;
-    public int potValue;
-
-    public boolean isRunning() {
-        return running;
-    }
+    private int initialBet;
 
     //Constructor
     public GameState(String... playerNames) {
@@ -36,18 +34,9 @@ public class GameState extends Thread implements Serializable {
         }
 
         //Starting Values
-        playerTurn = 0;
+        turn = 0;
         potValue = 0;
-    }
-
-    //Methods
-    @Override
-    public void run() {
-        if (playerTurn % players.size() == 0) {
-            //This means that the current turn is an initial turn, which means that we will ask if they want to double down or not
-            playerTurn = 0;
-
-        }
+        initialBet = 1;
     }
 
     private void blindBet(int amount) {
@@ -58,6 +47,29 @@ public class GameState extends Thread implements Serializable {
                 player.bankrupt = true;
             }
         }
+    }
+
+    public void hitPressed(int playerNumber) {
+
+    }
+
+    public void standPressed(int playerNumber) {
+
+    }
+
+    public void doubleUpPressed(int playerNumber) {
+        if (turn == 0) {
+            players.get(playerNumber).doubleUp = true;
+            initialBet += initialBet;
+        }
+        boolean allPlayersSelected = true;
+        for (Player player : players) {
+
+        }
+    }
+
+    public void dontDoubleUpPressed(int playerNumber) {
+
     }
 
     //Getters and setters
@@ -76,4 +88,32 @@ public class GameState extends Thread implements Serializable {
     public void setDeck(Deck deck) {
         this.deck = deck;
     }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    /*
+    while (true) {
+            if (turn == 0) {
+
+            } else {
+                switch (turn % players.size()) {
+                    case 0 -> {
+                        //TODO: ASK PLAYER 1 TO HIT OR STAND AND EXECUTE PROPERLY
+                    }
+                    case 1 -> {
+                        //TODO: ASK PLAYER 2 TO HIT OR STAND AND EXECUTE PROPERLY
+                    }
+                    case 2 -> {
+                        //TODO: ASK PLAYER 3 TO HIT OR STAND AND EXECUTE PROPERLY
+                    }
+                    case 3 -> {
+                        //TODO: ASK PLAYER 4 TO HIT OR STAND AND EXECUTE PROPERLY
+                    }
+                }
+                //TODO: IF THERE IS NO PLAYER LEFT STANDING, DIVVY THE POT TO THE WINNERS
+            }
+        }
+     */
 }
