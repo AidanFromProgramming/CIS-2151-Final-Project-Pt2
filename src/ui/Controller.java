@@ -70,7 +70,7 @@ public class Controller extends Thread{
         BackgroundFill background_fill = new BackgroundFill(Paint.valueOf(Color.color(0.275,0.604, 0.196).toString()),
                 CornerRadii.EMPTY, Insets.EMPTY);
         Background background = new Background(background_fill);
-        main_stage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
+        main_stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
         main_stage.setBackground(background);
         tab_plane.setBackground(background);
     }
