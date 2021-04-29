@@ -53,8 +53,10 @@ public class GameState extends Thread implements Serializable {
             player.hand.drawCard(deck);
             player.hand.sort();
         }
-        dealer.drawCard(deck);
-        dealer.drawCard(deck);
+        //Making dealer draw
+        while (dealer.value() < 17) {
+            dealer.drawCard(deck);
+        }
         dealer.sort();
     }
 
@@ -103,11 +105,6 @@ public class GameState extends Thread implements Serializable {
     }
 
     public void endRound() {
-        //Making dealer draw
-        while (dealer.value() < 17) {
-            dealer.drawCard(deck);
-        }
-
         //Divvying up the pot to people who are higher than the dealer
         List<Player> winnningPlayers = new ArrayList<>();
         for (Player player : players) {
@@ -128,13 +125,6 @@ public class GameState extends Thread implements Serializable {
             player.standing = false;
         }
         dealer.clear();
-
-        //Pause to let players take in what happened
-        try {
-            sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         //Start new round
         startNewRound();

@@ -24,6 +24,7 @@ public class Deck implements Serializable {
         //(yes I know I technically can make a method for swapping but that's more effort than it's worth)
         Card cardDummy;
         int selectedCardIndex;
+        hiLoValue = 0;
 
         if (size == 1) {
             for (int currentCardIndex = 0; currentCardIndex < 52; currentCardIndex++) {
