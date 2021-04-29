@@ -17,7 +17,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui.fxml")));
         primaryStage.setTitle("Blackjack");
         Handler globalExceptionHandler = new Controller.Handler();
-        //Thread.setDefaultUncaughtExceptionHandler((Thread.UncaughtExceptionHandler) globalExceptionHandler);
+        Thread.setDefaultUncaughtExceptionHandler((Thread.UncaughtExceptionHandler) globalExceptionHandler);
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
     }
