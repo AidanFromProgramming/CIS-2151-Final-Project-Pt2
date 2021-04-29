@@ -31,6 +31,7 @@
                         <TextField fx:id="player_namebox_2" layoutX="566.0" layoutY="261.0" promptText="Player #2's Name" visible="false" />
                         <TextField fx:id="player_namebox_3" layoutX="566.0" layoutY="306.0" promptText="Player #3's Name" visible="false" />
                         <TextField fx:id="player_namebox_4" layoutX="567.0" layoutY="350.0" promptText="Player #4's Name" visible="false" />
+                        <Text layoutX="1088.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Made By: Aidan &amp; Bryce Sweeney" />
                      </children>
                   </AnchorPane>
             </content>
