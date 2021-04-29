@@ -8,11 +8,13 @@ public class Deck implements Serializable {
     //Fields
     private final List<Card> cards;
     private final int size; //NOTE: Size means how many decks there are in this deck. Simply the maximum.
+    public int hiLoValue;
 
     //Constructor
     public Deck(int size) {
         this.size = size;
         cards = new ArrayList<>();
+        hiLoValue = 0;
     }
 
     //For every pace in the deck, that card is swapped with another random card in the deck

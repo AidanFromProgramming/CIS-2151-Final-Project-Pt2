@@ -17,6 +17,10 @@ public class Hand implements Serializable {
 
     //Methods
     public void drawCard(Deck deck) {
+        switch (deck.getCards().get(0).getFace().ordinal()) {
+            case 0, 1, 2, 3, 4 -> deck.hiLoValue++;
+            case 8, 9, 10, 11, 12 -> deck.hiLoValue--;
+        }
         this.cards.add(deck.getCards().remove(0));
     }
 

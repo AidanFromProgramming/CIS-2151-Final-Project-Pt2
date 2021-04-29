@@ -56,12 +56,6 @@ public class GameState extends Thread implements Serializable {
         dealer.drawCard(deck);
         dealer.drawCard(deck);
         dealer.sort();
-
-        if (dealer.value() <= 10) {
-            initialBet += initialBet;
-            dealer.drawCard(deck);
-            dealer.sort();
-        }
     }
 
     public void checkForLastDoubleUp() {
@@ -109,36 +103,22 @@ public class GameState extends Thread implements Serializable {
     }
 
     public void endRound() {
-        //Divvying up money to highest scoring individuals (very inefficient I know)
-        List<Integer> playerHandValues = new ArrayList<>();
-        for (int i = 0; i < players.size(); i++) {
-            playerHandValues.add(i, players.get(i).hand.value());
+        //Making dealer draw
+        while (dealer.value() < 17) {
+            dealer.drawCard(deck);
         }
-        int highestHand = 0;
-        for (int i = 0; i < players.size(); i++) {
-            if (playerHandValues.get(i) > highestHand && !players.get(i).busted && !players.get(i).bankrupt) {
-                highestHand = playerHandValues.get(i);
-            }
-        }
-        if (highestHand >= dealer.value()) {
-            List<Integer> playersWithHighestHand = new ArrayList<>();
-            for (int i = 0; i < players.size(); i++) {
-                if (players.get(i).hand.value() == highestHand) {
-                    playersWithHighestHand.add(i);
-                }
-            }
-            for (int i : playersWithHighestHand) {
-                players.get(i).money += potValue / playersWithHighestHand.size();
-            }
 
-            //Clear hands & undouble up
-            for (Player player : players) {
-                player.hand.clear();
-                player.doubleUp = 0;
-                player.busted = false;
-                player.standing = false;
+        //Divvying up the pot to people who are higher than the dealer
+        List<Player> winnningPlayers = new ArrayList<>();
+        for (Player player : players) {
+            if (player.hand.value() > dealer.value()) {
+                winnningPlayers.add(player);
             }
         }
+        for (Player player : winnningPlayers) {
+            player.money += potValue / winnningPlayers.size();
+        }
+
 
         //Clearing player hands
         for (Player player : players) {
@@ -148,6 +128,13 @@ public class GameState extends Thread implements Serializable {
             player.standing = false;
         }
         dealer.clear();
+
+        //Pause to let players take in what happened
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //Start new round
         startNewRound();

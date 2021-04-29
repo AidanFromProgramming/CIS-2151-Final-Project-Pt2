@@ -64,6 +64,7 @@ public class Controller extends Thread{
     public Text card_value_1;
     public Text card_value_2;
     public Text card_value_3;
+    public Text current_hilo_text;
 
     File gameFile = null;
     FileOutputStream fileStreamOut = null;
@@ -144,6 +145,7 @@ public class Controller extends Thread{
             player_money_3.setText(game.getPlayers().size() > 3 ? "Money: " + game.getPlayers().get(3).money : "");
             current_player_text.setText("Current Player: " + (game.turn >= 0 ? game.getPlayers().get(game.turn).name : "Choose double up"));
             current_pot_text.setText("Current Pot: " + game.potValue);
+            current_hilo_text.setText("Current Hi-Lo Value: " + game.deck.hiLoValue);
 
             //Update card values
             String formatString = "Card Values: %1s/21";
